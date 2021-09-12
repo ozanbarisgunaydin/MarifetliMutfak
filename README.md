@@ -6,3 +6,5 @@ The app design for personal creating recipe book. It contains MVVM architecture.
 The App contains multi viewcontrollers which are connected with segues for the reason increasing user interface compability. Therefore, the recipe saving (uploading) interface contains the data pickers for fast interaction. 
 
 The recipe app will update for shopping. Users can chose they will cook meal (recipes) and the app can show the needed materials on the shopping list screen.
+
+![alt-text](https://github.com/ozanbarisgunaydin/MarifetliMutfak/blob/main/ezgif.com-gif-maker.gif)
