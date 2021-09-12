@@ -1,0 +1,6 @@
+framework module Pods_MarifetliMutfak {
+  umbrella header "Pods-MarifetliMutfak-umbrella.h"
+
+  export *
+  module * { export * }
+}

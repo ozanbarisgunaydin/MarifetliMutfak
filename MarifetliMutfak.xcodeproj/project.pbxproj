@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06A0FACD26EBF96C00097907 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FACC26EBF96C00097907 /* AppDelegate.swift */; };
+		06A0FACF26EBF96C00097907 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FACE26EBF96C00097907 /* SceneDelegate.swift */; };
+		06A0FAD126EBF96C00097907 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FAD026EBF96C00097907 /* SignInVC.swift */; };
+		06A0FAD426EBF96C00097907 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06A0FAD226EBF96C00097907 /* Main.storyboard */; };
+		06A0FAD626EBF96C00097907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06A0FAD526EBF96C00097907 /* Assets.xcassets */; };
+		06A0FAD926EBF96C00097907 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06A0FAD726EBF96C00097907 /* LaunchScreen.storyboard */; };
+		06A0FAE126EBFD5700097907 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06A0FAE026EBFD5700097907 /* GoogleService-Info.plist */; };
+		06A0FAE326EC00DF00097907 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FAE226EC00DF00097907 /* FeedVC.swift */; };
+		06A0FAE526EC00F300097907 /* AddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FAE426EC00F300097907 /* AddVC.swift */; };
+		06A0FAE726EC011600097907 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FAE626EC011600097907 /* SettingsVC.swift */; };
+		06A0FAED26EC090D00097907 /* DinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FAEC26EC090D00097907 /* DinnerViewController.swift */; };
+		06EFCF3326ECA71800297B75 /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFCF3226ECA71800297B75 /* UserSingleton.swift */; };
+		06EFCF3526ECBF4000297B75 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFCF3426ECBF4000297B75 /* FeedCell.swift */; };
+		06EFCF3726ECC30000297B75 /* Dinners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EFCF3626ECC30000297B75 /* Dinners.swift */; };
+		E803AE8BE7857F1341524958 /* Pods_MarifetliMutfak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B98C6B757D559EFF53F93C8 /* Pods_MarifetliMutfak.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06833125E56CEEA4CD06CC1E /* Pods-MarifetliMutfak.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarifetliMutfak.release.xcconfig"; path = "Target Support Files/Pods-MarifetliMutfak/Pods-MarifetliMutfak.release.xcconfig"; sourceTree = "<group>"; };
+		06A0FAC926EBF96C00097907 /* MarifetliMutfak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarifetliMutfak.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06A0FACC26EBF96C00097907 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		06A0FACE26EBF96C00097907 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		06A0FAD026EBF96C00097907 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		06A0FAD326EBF96C00097907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		06A0FAD526EBF96C00097907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		06A0FAD826EBF96C00097907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		06A0FADA26EBF96C00097907 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06A0FAE026EBFD5700097907 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		06A0FAE226EC00DF00097907 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		06A0FAE426EC00F300097907 /* AddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVC.swift; sourceTree = "<group>"; };
+		06A0FAE626EC011600097907 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		06A0FAEC26EC090D00097907 /* DinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerViewController.swift; sourceTree = "<group>"; };
+		06EFCF3226ECA71800297B75 /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
+		06EFCF3426ECBF4000297B75 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		06EFCF3626ECC30000297B75 /* Dinners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dinners.swift; sourceTree = "<group>"; };
+		2B98C6B757D559EFF53F93C8 /* Pods_MarifetliMutfak.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarifetliMutfak.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C626E349DFE5692C744C59F2 /* Pods-MarifetliMutfak.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarifetliMutfak.debug.xcconfig"; path = "Target Support Files/Pods-MarifetliMutfak/Pods-MarifetliMutfak.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06A0FAC626EBF96B00097907 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E803AE8BE7857F1341524958 /* Pods_MarifetliMutfak.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06A0FAC026EBF96B00097907 = {
+			isa = PBXGroup;
+			children = (
+				06A0FACB26EBF96C00097907 /* MarifetliMutfak */,
+				06A0FACA26EBF96C00097907 /* Products */,
+				4DB7CC890542CDE5055AFBA0 /* Pods */,
+				0E73460FB435669502F0229B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		06A0FACA26EBF96C00097907 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06A0FAC926EBF96C00097907 /* MarifetliMutfak.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06A0FACB26EBF96C00097907 /* MarifetliMutfak */ = {
+			isa = PBXGroup;
+			children = (
+				06EFCF3126ECA6EF00297B75 /* Model */,
+				06A0FAEB26EC017100097907 /* Delegates */,
+				06A0FAEA26EC014700097907 /* ViewControllers */,
+				06A0FAD226EBF96C00097907 /* Main.storyboard */,
+				06A0FAD526EBF96C00097907 /* Assets.xcassets */,
+				06A0FAD726EBF96C00097907 /* LaunchScreen.storyboard */,
+				06A0FADA26EBF96C00097907 /* Info.plist */,
+				06A0FAE026EBFD5700097907 /* GoogleService-Info.plist */,
+			);
+			path = MarifetliMutfak;
+			sourceTree = "<group>";
+		};
+		06A0FAEA26EC014700097907 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				06EFCF3426ECBF4000297B75 /* FeedCell.swift */,
+				06A0FAD026EBF96C00097907 /* SignInVC.swift */,
+				06A0FAE226EC00DF00097907 /* FeedVC.swift */,
+				06A0FAE426EC00F300097907 /* AddVC.swift */,
+				06A0FAE626EC011600097907 /* SettingsVC.swift */,
+				06A0FAEC26EC090D00097907 /* DinnerViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		06A0FAEB26EC017100097907 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				06A0FACC26EBF96C00097907 /* AppDelegate.swift */,
+				06A0FACE26EBF96C00097907 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		06EFCF3126ECA6EF00297B75 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06EFCF3226ECA71800297B75 /* UserSingleton.swift */,
+				06EFCF3626ECC30000297B75 /* Dinners.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0E73460FB435669502F0229B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B98C6B757D559EFF53F93C8 /* Pods_MarifetliMutfak.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DB7CC890542CDE5055AFBA0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C626E349DFE5692C744C59F2 /* Pods-MarifetliMutfak.debug.xcconfig */,
+				06833125E56CEEA4CD06CC1E /* Pods-MarifetliMutfak.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06A0FAC826EBF96B00097907 /* MarifetliMutfak */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06A0FADD26EBF96C00097907 /* Build configuration list for PBXNativeTarget "MarifetliMutfak" */;
+			buildPhases = (
+				FF83197EFA30EA839278FB6E /* [CP] Check Pods Manifest.lock */,
+				06A0FAC526EBF96B00097907 /* Sources */,
+				06A0FAC626EBF96B00097907 /* Frameworks */,
+				06A0FAC726EBF96B00097907 /* Resources */,
+				4BC11892C30D626757D44520 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarifetliMutfak;
+			productName = MarifetliMutfak;
+			productReference = 06A0FAC926EBF96C00097907 /* MarifetliMutfak.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06A0FAC126EBF96B00097907 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					06A0FAC826EBF96B00097907 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 06A0FAC426EBF96B00097907 /* Build configuration list for PBXProject "MarifetliMutfak" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 06A0FAC026EBF96B00097907;
+			productRefGroup = 06A0FACA26EBF96C00097907 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06A0FAC826EBF96B00097907 /* MarifetliMutfak */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06A0FAC726EBF96B00097907 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06A0FAD926EBF96C00097907 /* LaunchScreen.storyboard in Resources */,
+				06A0FAE126EBFD5700097907 /* GoogleService-Info.plist in Resources */,
+				06A0FAD626EBF96C00097907 /* Assets.xcassets in Resources */,
+				06A0FAD426EBF96C00097907 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BC11892C30D626757D44520 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarifetliMutfak/Pods-MarifetliMutfak-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarifetliMutfak/Pods-MarifetliMutfak-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MarifetliMutfak/Pods-MarifetliMutfak-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF83197EFA30EA839278FB6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarifetliMutfak-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06A0FAC526EBF96B00097907 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06A0FAE326EC00DF00097907 /* FeedVC.swift in Sources */,
+				06EFCF3526ECBF4000297B75 /* FeedCell.swift in Sources */,
+				06A0FAD126EBF96C00097907 /* SignInVC.swift in Sources */,
+				06A0FACD26EBF96C00097907 /* AppDelegate.swift in Sources */,
+				06A0FACF26EBF96C00097907 /* SceneDelegate.swift in Sources */,
+				06EFCF3326ECA71800297B75 /* UserSingleton.swift in Sources */,
+				06A0FAED26EC090D00097907 /* DinnerViewController.swift in Sources */,
+				06A0FAE526EC00F300097907 /* AddVC.swift in Sources */,
+				06EFCF3726ECC30000297B75 /* Dinners.swift in Sources */,
+				06A0FAE726EC011600097907 /* SettingsVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		06A0FAD226EBF96C00097907 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06A0FAD326EBF96C00097907 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		06A0FAD726EBF96C00097907 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06A0FAD826EBF96C00097907 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		06A0FADB26EBF96C00097907 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		06A0FADC26EBF96C00097907 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06A0FADE26EBF96C00097907 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C626E349DFE5692C744C59F2 /* Pods-MarifetliMutfak.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 225AXALHQ4;
+				INFOPLIST_FILE = MarifetliMutfak/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozanbarisgunaydin.MarifetliMutfak;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		06A0FADF26EBF96C00097907 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06833125E56CEEA4CD06CC1E /* Pods-MarifetliMutfak.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 225AXALHQ4;
+				INFOPLIST_FILE = MarifetliMutfak/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ozanbarisgunaydin.MarifetliMutfak;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06A0FAC426EBF96B00097907 /* Build configuration list for PBXProject "MarifetliMutfak" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06A0FADB26EBF96C00097907 /* Debug */,
+				06A0FADC26EBF96C00097907 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06A0FADD26EBF96C00097907 /* Build configuration list for PBXNativeTarget "MarifetliMutfak" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06A0FADE26EBF96C00097907 /* Debug */,
+				06A0FADF26EBF96C00097907 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06A0FAC126EBF96B00097907 /* Project object */;
+}
