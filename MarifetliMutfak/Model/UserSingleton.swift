@@ -9,14 +9,10 @@ import Foundation
 import Firebase
 
 class UserSingleton {
-    
+
     static let sharedUserInfo = UserSingleton()
-    
     var email = Auth.auth().currentUser?.email
-//    malzeme tarif vs eklenecek
-    
     private init() {
-        
+
     }
-    
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06596BB126F69B7C00D0DB84 /* DinnerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06596BB026F69B7C00D0DB84 /* DinnerViewModel.swift */; };
 		06A0FACD26EBF96C00097907 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FACC26EBF96C00097907 /* AppDelegate.swift */; };
 		06A0FACF26EBF96C00097907 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FACE26EBF96C00097907 /* SceneDelegate.swift */; };
 		06A0FAD126EBF96C00097907 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A0FAD026EBF96C00097907 /* SignInVC.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06596BB026F69B7C00D0DB84 /* DinnerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerViewModel.swift; sourceTree = "<group>"; };
 		06833125E56CEEA4CD06CC1E /* Pods-MarifetliMutfak.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarifetliMutfak.release.xcconfig"; path = "Target Support Files/Pods-MarifetliMutfak/Pods-MarifetliMutfak.release.xcconfig"; sourceTree = "<group>"; };
 		06A0FAC926EBF96C00097907 /* MarifetliMutfak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarifetliMutfak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06A0FACC26EBF96C00097907 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				06EFCF3226ECA71800297B75 /* UserSingleton.swift */,
 				06EFCF3626ECC30000297B75 /* Dinners.swift */,
+				06596BB026F69B7C00D0DB84 /* DinnerViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				06EFCF3526ECBF4000297B75 /* FeedCell.swift in Sources */,
 				06A0FAD126EBF96C00097907 /* SignInVC.swift in Sources */,
 				06A0FACD26EBF96C00097907 /* AppDelegate.swift in Sources */,
+				06596BB126F69B7C00D0DB84 /* DinnerViewModel.swift in Sources */,
 				06A0FACF26EBF96C00097907 /* SceneDelegate.swift in Sources */,
 				06EFCF3326ECA71800297B75 /* UserSingleton.swift in Sources */,
 				06A0FAED26EC090D00097907 /* DinnerViewController.swift in Sources */,

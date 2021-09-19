@@ -12,6 +12,8 @@ pod 'Firebase/Core'
 pod 'Firebase/Storage'
 pod 'SDWebImage'
 pod 'MultilineTextField'
+pod 'Firebase/Database'
+pod 'Firebase/Core'
 
   # Pods for MarifetliMutfak
 

@@ -10,15 +10,15 @@ import Firebase
 
 class SignInVC: UIViewController {
 
-    @IBOutlet weak var emailText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
+    @IBOutlet weak private var emailText: UITextField!
+    @IBOutlet weak private var passwordText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
-    @IBAction func signInClicked(_ sender: Any) {
+    @IBAction private func signInClicked(_ sender: Any) {
         if emailText.text != nil && passwordText.text != nil {
         
             Auth.auth().signIn(withEmail: self.emailText.text!, password: self.passwordText.text!) { result, error in
@@ -36,7 +36,7 @@ class SignInVC: UIViewController {
         
     }
     
-    @IBAction func signUpClicked(_ sender: Any) {
+    @IBAction private func signUpClicked(_ sender: Any) {
         if emailText.text != nil && passwordText.text != nil {
             
             Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!) { auth, error in
@@ -49,7 +49,7 @@ class SignInVC: UIViewController {
                     
                     firestore.collection("UserInfo").addDocument(data: userDictionary) { (error) in
                         if error != nil {
-//
+                            
                         }
                     }
                     
@@ -63,12 +63,15 @@ class SignInVC: UIViewController {
         
     }
     
+    
+}
+
+extension UIViewController {
     func makeAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let okButton = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
     }
-    
-}
 
+}

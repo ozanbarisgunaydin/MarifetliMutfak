@@ -9,9 +9,8 @@ import UIKit
 import Firebase
 import MultilineTextField
 
-class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class AddVC: UIViewController {
  
-    
 
     @IBOutlet weak var uploadImageView: UIImageView!
     @IBOutlet weak var dinnerTitle: UITextField!
@@ -36,25 +35,24 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     
     @IBOutlet weak var dinnerCategory: UITextField!
     
-    var selectedTextField : UITextField?
-    var pickerView = UIPickerView()
+    private var selectedTextField : UITextField?
+    private var pickerView = UIPickerView()
 
     
-    var selectedUnit: String?
-    let unitArray = ["Litre", "Kilogram", "Yemek Kaşığı", "Çay Kaşığı", "Su Bardağı", "Çay Bardağı", "Adet"]
-    let categoryArray = ["Hamur İşleri", "Tatlılar", "İçecekler", "Tencere Yemekleri", "Çorbalar", "Ara Sıcaklar", "Kahvaltılıklar", "Et Yemekleri", "Tavuk Yemekleri"]
+    private var selectedUnit: String?
+    private let unitArray = ["Litre", "Kilogram", "Yemek Kaşığı", "Çay Kaşığı", "Su Bardağı", "Çay Bardağı", "Adet"]
+    private let categoryArray = ["Hamur İşleri", "Tatlılar", "İçecekler", "Tencere Yemekleri", "Çorbalar", "Ara Sıcaklar", "Kahvaltılıklar", "Et Yemekleri", "Tavuk Yemekleri"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         pickerView.delegate = self
         pickerView.dataSource = self
-        
+
         DispatchQueue.main.async {
             self.pickerView.reloadAllComponents()
         }
-        
-        
+
         uploadImageView.isUserInteractionEnabled = true
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(choosePicture))
         uploadImageView.addGestureRecognizer(gestureRecognizer)
@@ -63,27 +61,14 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
         unit2.delegate = self
         unit3.delegate = self
         unit4.delegate = self
+        dinnerCategory.delegate = self
         
         createPickerView()
         dismissPickerView()
   
         
     }
-    @objc func choosePicture() {
-        
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        self.present(picker, animated: true, completion: nil)
-        
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        uploadImageView.image = info[.originalImage] as? UIImage
-        self.dismiss(animated: true, completion: nil)
-    }
- 
-    @IBAction func addButtonClicked(_ sender: Any) {
+    @IBAction private func addButtonClicked(_ sender: Any) {
         
         let storage = Storage.storage()
         let storageReferance = storage.reference()
@@ -100,9 +85,10 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                 } else {
                     imageReferance.downloadURL { url, error in
                         if error == nil {
-                            let imageUrl = url?.absoluteString
                             
-                            let dinnerDescription = self.howCanCook.text
+                            let dinnerCategory = self.dinnerCategory.text
+                            let imageUrl = url?.absoluteString
+                            let description = self.howCanCook.text
                             let dinnerTitle = self.dinnerTitle.text
                             let material1 = self.material1.text
                             let unit1 = self.unit1.text
@@ -116,8 +102,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                             let material4 = self.material4.text
                             let unit4 = self.unit4.text
                             let int4 = self.int4.text
-                            let dinnercategoryArray = self.dinnerCategory.text
-                            
+
                             let fireStore = Firestore.firestore()
                             
                             fireStore.collection("Recipes").whereField("writer", isEqualTo: UserSingleton.sharedUserInfo.email!).getDocuments { snapshot, error in
@@ -134,25 +119,79 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                                         for document in snapshot!.documents {
                                             
                                             
-                                            let dinner = document.data()["dinnercategoryArray"]! as! [Any]
+                                            let dinner = document.data()["dinnerCategory"]!
                                             
-                                            if "\(dinner[0])" == dinnercategoryArray {
-                                                print("1")
+                                            if "\(dinner)" == dinnerCategory {
+                                                
                                             let documentId = document.documentID
-                                            
-                                            if var dinnercategoryArray = document.get("dinnercategoryArray") as? [String] {
-                                                dinnercategoryArray.append(self.dinnerCategory!.text!)
-                                                print("2")
-                                                if var dinnerTitle = document.get("dinnerTitle") as? [String] {
-                                                    dinnerTitle.append(self.dinnerTitle!.text!)
-                                                    print("3")
-                                                    let additionalDictionary = ["dinnercategoryArray" : dinnercategoryArray, "dinnerTitle": dinnerTitle] as [String : Any]
+
+                                            if var dinnerTitle = document.get("dinnerTitle") as? [String] {
+                                                dinnerTitle.append(self.dinnerTitle!.text!)
+                                                
+                                            if var imageUrlArray = document.get("imageUrlArray") as? [String] {
+                                                imageUrlArray.append(imageUrl!)
+                                                
+                                            if var description = document.get("dinnerDescription") as? [String] {
+                                                description.append(self.howCanCook!.text!)
+                                                
+                                            if var material1 = document.get("material1") as? [String] {
+                                                material1.append(self.material1!.text!)
+                                                
+                                            if var unit1 = document.get("unit1") as? [String] {
+                                                unit1.append(self.unit1!.text!)
+                                               
+                                            if var int1 = document.get("Int1") as? [String] {
+                                                int1.append(self.int1!.text!)
+                                               
+                                                if var material2 = document.get("material2") as? [String] {
+                                                    material2.append(self.material2!.text!)
+                                                    
+                                                if var unit2 = document.get("unit2") as? [String] {
+                                                    unit2.append(self.unit2!.text!)
+                                                   
+                                                if var int2 = document.get("Int2") as? [String] {
+                                                    int2.append(self.int2!.text!)
+                                                   
+                                                    if var material3 = document.get("material3") as? [String] {
+                                                        material3.append(self.material3!.text!)
+                                                     
+                                                    if var unit3 = document.get("unit3") as? [String] {
+                                                        unit3.append(self.unit3!.text!)
+                                                      
+                                                    if var int3 = document.get("Int3") as? [String] {
+                                                        int3.append(self.int3!.text!)
+                                                       
+                                                        if var material4 = document.get("material4") as? [String] {
+                                                            material4.append(self.material4!.text!)
+                                                          
+                                                        if var unit4 = document.get("unit4") as? [String] {
+                                                            unit4.append(self.unit4!.text!)
+                                                           
+                                                        if var int4 = document.get("Int4") as? [String] {
+                                                            int4.append(self.int4!.text!)
+                                                       
+                                                            let additionalDictionary = ["dinnerTitle": dinnerTitle, "imageUrlArray": imageUrlArray, "dinnerDescription": description, "material1": material1, "Int1": int1, "unit1": unit1, "material2": material2, "Int2": int2, "unit2": unit2, "material3": material3, "Int3": int3, "unit3": unit3, "material4": material4, "Int4": int4, "unit4": unit4] as [String : Any]
                                                  
                                                     fireStore.collection("Recipes").document(documentId).setData(additionalDictionary, merge: true) { error in
                                                         
                                                     if error == nil {
                                                         self.tabBarController?.selectedIndex = 0
                                                         self.uploadImageView.image = UIImage(named: "Group 1.png")
+                                        
+
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
                                                             }
                                                         }
                                                     }
@@ -161,8 +200,8 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                                             } else if documentNumber != variable {
                                                 variable += 1
                                             } else {
-                                                print("4")
-                                                let recipeDictionary = ["dinnerTitle": [dinnerTitle!], "dinnercategoryArray": [dinnercategoryArray!], "imageUrl": imageUrl!, "date": FieldValue.serverTimestamp(), "dinnerDescription": String(dinnerDescription!), "material1": String(material1!), "Int1": String(int1!), "unit1": String(unit1!), "material2": String(material2!), "Int2": String(int2!), "unit2": String(unit2!), "material3": String(material3!), "Int3": String(int3!), "unit3": String(unit3!), "material4": String(material4!), "Int4": String(int4!), "unit4": String(unit4!), "writer": UserSingleton.sharedUserInfo.email!] as [String : Any]
+                                          
+                                                let recipeDictionary = ["dinnerTitle": [dinnerTitle!], "dinnerCategory": dinnerCategory!, "imageUrlArray": [imageUrl!], "date": FieldValue.serverTimestamp(), "dinnerDescription": [description!], "material1": [material1!], "Int1": [int1!], "unit1": [unit1!], "material2": [material2!], "Int2": [int2!], "unit2": [unit2!], "material3": [material3!], "Int3": [int3!], "unit3": [unit3!], "material4": [material4!], "Int4": [int4!], "unit4": [unit4!], "writer": UserSingleton.sharedUserInfo.email!] as [String : Any]
                                                 
                                                     fireStore.collection("Recipes").addDocument(data: recipeDictionary) { (error) in
                                                     
@@ -173,14 +212,15 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                                                     } else  {
                                                         self.tabBarController?.selectedIndex = 0
                                                         self.uploadImageView.image = UIImage(named: "Group 1.png")
+                                                        
                                                     }
                                                 }
                                             }
                                         } 
                                     } else {
-                                        print("5")
-                                        let recipeDictionary = ["dinnerTitle": [dinnerTitle!], "dinnercategoryArray": [dinnercategoryArray!], "imageUrl": imageUrl!, "date": FieldValue.serverTimestamp(), "dinnerDescription": String(dinnerDescription!), "material1": String(material1!), "Int1": String(int1!), "unit1": String(unit1!), "material2": String(material2!), "Int2": String(int2!), "unit2": String(unit2!), "material3": String(material3!), "Int3": String(int3!), "unit3": String(unit3!), "material4": String(material4!), "Int4": String(int4!), "unit4": String(unit4!), "writer": UserSingleton.sharedUserInfo.email!] as [String : Any]
-                                        
+                          
+                                        let recipeDictionary = ["dinnerTitle": [dinnerTitle!], "dinnerCategory": dinnerCategory!, "imageUrlArray": [imageUrl!], "date": FieldValue.serverTimestamp(), "dinnerDescription": [description!], "material1": [material1!], "Int1": [int1!], "unit1": [unit1!], "material2": [material2!], "Int2": [int2!], "unit2": [unit2!], "material3": [material3!], "Int3": [int3!], "unit3": [unit3!], "material4": [material4!], "Int4": [int4!], "unit4": [unit4!], "writer": UserSingleton.sharedUserInfo.email!] as [String : Any]
+                                            
                                             fireStore.collection("Recipes").addDocument(data: recipeDictionary) { (error) in
                                             
                                             if error != nil {
@@ -190,6 +230,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
                                             } else  {
                                                 self.tabBarController?.selectedIndex = 0
                                                 self.uploadImageView.image = UIImage(named: "Group 1.png")
+                                                      
                                             }
                                         }
                                     }
@@ -201,13 +242,29 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
             }
         }
     }
+}
+
+extension AddVC:  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func makeAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okButton = UIAlertAction(title: "Tamam", style: UIAlertAction.Style.default, handler: nil)
-        alert.addAction(okButton)
-        self.present(alert, animated: true, completion: nil)
+    @objc func choosePicture() {
+        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+        
     }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        uploadImageView.image = info[.originalImage] as? UIImage
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension AddVC: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1 // number of session
@@ -258,10 +315,6 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     }
 
     func createPickerView() {
-        
-//        let pickerView = UIPickerView()
-//        pickerView.delegate = self
-//        pickerView.dataSource = self
 
         unit1.inputView = pickerView
         unit2.inputView = pickerView
@@ -272,6 +325,7 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     }
     
     func dismissPickerView() {
+        
        let toolBar = UIToolbar()
        toolBar.sizeToFit()
        let button = UIBarButtonItem(title: "Seç", style: .plain, target: self, action: #selector(self.action))
@@ -294,5 +348,5 @@ class AddVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
        
     }
 
+    
 }
-
