@@ -14,6 +14,7 @@ pod 'SDWebImage'
 pod 'MultilineTextField'
 pod 'Firebase/Database'
 pod 'Firebase/Core'
+pod 'Kingfisher', '~> 4.0'
 
   # Pods for MarifetliMutfak
 

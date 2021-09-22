@@ -480,6 +480,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.6.1)
+  - Kingfisher (4.10.1)
   - leveldb-library (1.22.1)
   - MultilineTextField (1.0.0)
   - nanopb (2.30908.0):
@@ -499,6 +500,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
+  - Kingfisher (~> 4.0)
   - MultilineTextField
   - SDWebImage
 
@@ -521,6 +523,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - Kingfisher
     - leveldb-library
     - MultilineTextField
     - nanopb
@@ -545,12 +548,13 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   MultilineTextField: bb965487257ce72f880d313074d419cac34024ff
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 3675ae4a08961022c68a5fd3ca5cbe4d9108193b
+PODFILE CHECKSUM: b68d09eb270b1242ad82de6a090e14afc9748992
 
 COCOAPODS: 1.10.2

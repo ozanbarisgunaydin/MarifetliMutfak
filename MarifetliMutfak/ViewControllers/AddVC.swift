@@ -32,13 +32,11 @@ class AddVC: UIViewController {
     @IBOutlet weak var unit4: UITextField!
     @IBOutlet weak var int4: UITextField!
     
-    
     @IBOutlet weak var dinnerCategory: UITextField!
     
     private var selectedTextField : UITextField?
     private var pickerView = UIPickerView()
 
-    
     private var selectedUnit: String?
     private let unitArray = ["Litre", "Kilogram", "Yemek Kaşığı", "Çay Kaşığı", "Su Bardağı", "Çay Bardağı", "Adet"]
     private let categoryArray = ["Hamur İşleri", "Tatlılar", "İçecekler", "Tencere Yemekleri", "Çorbalar", "Ara Sıcaklar", "Kahvaltılıklar", "Et Yemekleri", "Tavuk Yemekleri"]

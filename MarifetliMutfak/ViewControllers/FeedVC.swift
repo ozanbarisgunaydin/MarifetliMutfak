@@ -7,7 +7,7 @@
 
 import UIKit
 import Firebase
-import SDWebImage
+import Kingfisher
 import FirebaseDatabase
 
 class FeedVC: UIViewController {
@@ -23,12 +23,15 @@ class FeedVC: UIViewController {
     private var dinnersArray = [Dinners]()
     private var filteredDinners = [Dinners]()
     private var chosenDinner : Dinners?
+    private var chosenRow : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+  
         
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .sentences
@@ -43,6 +46,8 @@ class FeedVC: UIViewController {
         searchController.searchBar.delegate = self
         tableView.tableHeaderView = searchController.searchBar
         searchController.hidesNavigationBarDuringPresentation = false
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).clearButtonMode = .never
+
         
         getRecipesFromFireBase()
     }
@@ -100,7 +105,6 @@ class FeedVC: UIViewController {
                         }
                     }
                 }
-                    self.filteredDinners = self.dinnersArray
                     DispatchQueue.main.async {
                     self.tableView.reloadData()
                     }
@@ -117,27 +121,24 @@ extension FeedVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
-        
-        
-        if searchActive == false {
+
+        if searchActive == true {
             print("search active!")
-            
             cell.dinnerCategoryLabel.text = filteredDinners[indexPath.section].dinnerCategory
             cell.dinnerNameLabel.text = filteredDinners[indexPath.section].dinnerTitle[indexPath.row]
-            cell.dinnerImageLabel.sd_setImage(with: URL(string: filteredDinners[indexPath.section].imageUrlArray[indexPath.row]))
-                
+            cell.dinnerImageLabel.kf.setImage(with: URL(string: filteredDinners[indexPath.section].imageUrlArray[indexPath.row]))
         } else {
+            print("yenilendim 1")
             print("search deactive!")
-            
             cell.dinnerCategoryLabel.text = dinnersArray[indexPath.section].dinnerCategory
             cell.dinnerNameLabel.text = dinnersArray[indexPath.section].dinnerTitle[indexPath.row]
-            cell.dinnerImageLabel.sd_setImage(with: URL(string: dinnersArray[indexPath.section].imageUrlArray[indexPath.row]))
+            cell.dinnerImageLabel.kf.setImage(with: URL(string: dinnersArray[indexPath.section].imageUrlArray[indexPath.row]))
         }
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if searchActive == false {
+        if searchActive == true {
          return filteredDinners.count
         } else {
         return dinnersArray.count
@@ -145,7 +146,7 @@ extension FeedVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActive == false {
+        if searchActive == true {
             return filteredDinners[section].dinnerTitle.count
         } else {
             return dinnersArray[section].dinnerTitle.count
@@ -165,17 +166,24 @@ extension FeedVC: UITableViewDelegate {
             
             let destinationVC = segue.destination as! DinnerViewController
             destinationVC.selectedDinner = chosenDinner
+            destinationVC.selectedRow = chosenRow
             
         }
     }
     
 
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchActive == true {
+        
+        if searchActive == false {
             chosenDinner = self.dinnersArray[indexPath.section]
+            chosenRow = indexPath.row
+            print(chosenRow)
         } else {
             chosenDinner = self.filteredDinners[indexPath.section]
+            chosenRow = indexPath.row
+            print(chosenRow)
         }
+        
         performSegue(withIdentifier: "toDinnerVC", sender: nil)
 
     }
@@ -183,41 +191,41 @@ extension FeedVC: UITableViewDelegate {
 }
 
 extension FeedVC: UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
-    
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true
-        self.tableView.reloadData()
-        print(1)
+        searchActive = false
+        print("text editING")
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false
-        self.tableView.reloadData()
-        print(2)
+        searchActive = true
+        print("text editED")
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = true
+        searchActive = false
+        filteredDinners.removeAll()
+        filteredDinners = dinnersArray
         self.tableView.reloadData()
-        print(3)
+        print("cancel clicked")
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = true
-        self.tableView.reloadData()
-        print(4)
+        print("search clicked")
     }
-    
+
     func filterContent (searchText:String) {
         
         self.filteredDinners = self.dinnersArray.filter { dinnersArray in
+            
             let dinnerName = dinnersArray.dinnerTitle[0].lowercased()
             return(dinnerName.contains(searchText.lowercased()))
         }
         
         tableView.reloadData()
     }
-    
+
     func updateSearchResults(for searchController: UISearchController) {
         filterContent(searchText: self.searchController.searchBar.text!)
         searchController.showsSearchResultsController = true
@@ -227,20 +235,31 @@ extension FeedVC: UISearchBarDelegate, UISearchResultsUpdating, UISearchControll
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty  else { dinnersArray = filteredDinners; return }
         
-        let searchText = searchBar.text!.lowercased()
+        filteredDinners.removeAll()
         
-            if searchText.isEmpty || searchText == "" {
+        let searchText = searchBar.text!.lowercased()
+            if searchText.isEmpty  {
                 
-              searchActive = false
+                searchActive = false
+                
+                filteredDinners.removeAll()
+                filteredDinners = dinnersArray
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+                print("yenilendim2")
                 
             } else {
                 
                 searchActive = true
-                
+        
                 filteredDinners = dinnersArray.filter({ title -> Bool in
                     return title.dinnerTitle[0].lowercased().contains(searchText.lowercased())
                 })
             }
+        self.tableView.reloadData()
     }
 
 }

@@ -26,33 +26,29 @@ class DinnerViewController: UIViewController {
     @IBOutlet private weak var unit4: UILabel!
     @IBOutlet private weak var dinnerHow: UILabel!
     @IBOutlet private weak var dinnerImage: UIImageView!
-    
-    
-    
-    var selectedDinner : Dinners?
 
+    var selectedDinner : Dinners?
+    var selectedRow : Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dinnerTitle.text = selectedDinner?.dinnerTitle[0]
+        dinnerTitle.text = selectedDinner?.dinnerTitle[selectedRow]
         category.text = selectedDinner?.dinnerCategory
-     
-        dinnerHow.text = selectedDinner?.description[0]
-        mat1.text = selectedDinner?.dinnerMaterial1[0]
-        int1.text = selectedDinner?.dinnerInt1[0]
-        unit1.text = selectedDinner?.dinnerUnit1[0]
-        mat2.text = selectedDinner?.dinnerMaterial2[0]
-        int2.text = selectedDinner?.dinnerInt2[0]
-        unit2.text = selectedDinner?.dinnerUnit2[0]
-        mat3.text = selectedDinner?.dinnerMaterial3[0]
-        int3.text = selectedDinner?.dinnerInt3[0]
-        unit3.text = selectedDinner?.dinnerUnit3[0]
-        mat4.text = selectedDinner?.dinnerMaterial4[0]
-        int4.text = selectedDinner?.dinnerInt4[0]
-        unit4.text = selectedDinner?.dinnerUnit4[0]
-
-        dinnerImage.sd_setImage(with: URL(string: selectedDinner!.imageUrlArray[0]))
-    
+        dinnerHow.text = selectedDinner?.description[selectedRow]
+        mat1.text = selectedDinner?.dinnerMaterial1[selectedRow]
+        int1.text = selectedDinner?.dinnerInt1[selectedRow]
+        unit1.text = selectedDinner?.dinnerUnit1[selectedRow]
+        mat2.text = selectedDinner?.dinnerMaterial2[selectedRow]
+        int2.text = selectedDinner?.dinnerInt2[selectedRow]
+        unit2.text = selectedDinner?.dinnerUnit2[selectedRow]
+        mat3.text = selectedDinner?.dinnerMaterial3[selectedRow]
+        int3.text = selectedDinner?.dinnerInt3[selectedRow]
+        unit3.text = selectedDinner?.dinnerUnit3[selectedRow]
+        mat4.text = selectedDinner?.dinnerMaterial4[selectedRow]
+        int4.text = selectedDinner?.dinnerInt4[selectedRow]
+        unit4.text = selectedDinner?.dinnerUnit4[selectedRow]
+        dinnerImage.kf.setImage(with: URL(string: selectedDinner!.imageUrlArray[selectedRow]))
+        
     }
 }
