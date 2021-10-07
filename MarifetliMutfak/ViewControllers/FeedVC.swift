@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import Kingfisher
 import FirebaseDatabase
+import Accelerate
 
 class FeedVC: UIViewController {
     
@@ -30,8 +31,7 @@ class FeedVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-  
+        tableView.allowsMultipleSelectionDuringEditing = true
         
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .sentences
@@ -48,7 +48,6 @@ class FeedVC: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).clearButtonMode = .never
 
-        
         getRecipesFromFireBase()
     }
     
@@ -112,9 +111,6 @@ class FeedVC: UIViewController {
             }
         }
     }
-
-   
-
     
 extension FeedVC: UITableViewDataSource {
         
@@ -123,13 +119,10 @@ extension FeedVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
 
         if searchActive == true {
-            print("search active!")
             cell.dinnerCategoryLabel.text = filteredDinners[indexPath.section].dinnerCategory
             cell.dinnerNameLabel.text = filteredDinners[indexPath.section].dinnerTitle[indexPath.row]
             cell.dinnerImageLabel.kf.setImage(with: URL(string: filteredDinners[indexPath.section].imageUrlArray[indexPath.row]))
         } else {
-            print("yenilendim 1")
-            print("search deactive!")
             cell.dinnerCategoryLabel.text = dinnersArray[indexPath.section].dinnerCategory
             cell.dinnerNameLabel.text = dinnersArray[indexPath.section].dinnerTitle[indexPath.row]
             cell.dinnerImageLabel.kf.setImage(with: URL(string: dinnersArray[indexPath.section].imageUrlArray[indexPath.row]))
@@ -167,11 +160,8 @@ extension FeedVC: UITableViewDelegate {
             let destinationVC = segue.destination as! DinnerViewController
             destinationVC.selectedDinner = chosenDinner
             destinationVC.selectedRow = chosenRow
-            
         }
     }
-    
-
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if searchActive == false {
@@ -187,19 +177,57 @@ extension FeedVC: UITableViewDelegate {
         performSegue(withIdentifier: "toDinnerVC", sender: nil)
 
     }
+        func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+        }
+    
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            print(indexPath.row)
             
+            fireStoreDatabase.collection("Recipes").whereField("dinnerCategory", isEqualTo: dinnersArray[indexPath.section].dinnerCategory).getDocuments { snapshot, error in
+                if error != nil {
+                    self.makeAlert(title: "Hata", message: error?.localizedDescription ?? "Error")
+                } else {
+                    if snapshot?.isEmpty == false && snapshot != nil {
+                        
+                        for document in snapshot!.documents {
+                            
+                            let documentId = document.documentID
+                            print(documentId)
+                            
+                            if editingStyle == .delete{
+                                
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["dinnerTitle" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerTitle[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["dinnerDescription" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].description[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["imageUrlArray" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].imageUrlArray[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["Int1" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerInt1[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["Int2" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerInt2[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["Int3" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerInt3[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["Int4" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerInt4[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["unit1" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerUnit1[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["unit2" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerUnit2[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["unit3" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerUnit3[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["unit4" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerUnit4[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["material1" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerMaterial1[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["material2" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerMaterial2[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["material3" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerMaterial3[indexPath.row]])])
+                                self.fireStoreDatabase.collection("Recipes").document(documentId).updateData(["material4" : FieldValue.arrayRemove([self.dinnersArray[indexPath.section].dinnerMaterial4[indexPath.row]])])
+                            }
+                        }
+                    }
+                }
+            }
+    }
 }
 
 extension FeedVC: UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchActive = false
-        print("text editING")
     }
 
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = true
-        print("text editED")
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -207,12 +235,10 @@ extension FeedVC: UISearchBarDelegate, UISearchResultsUpdating, UISearchControll
         filteredDinners.removeAll()
         filteredDinners = dinnersArray
         self.tableView.reloadData()
-        print("cancel clicked")
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = true
-        print("search clicked")
     }
 
     func filterContent (searchText:String) {
@@ -241,20 +267,15 @@ extension FeedVC: UISearchBarDelegate, UISearchResultsUpdating, UISearchControll
             if searchText.isEmpty  {
                 
                 searchActive = false
-                
                 filteredDinners.removeAll()
                 filteredDinners = dinnersArray
-                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
                 
-                print("yenilendim2")
-                
             } else {
                 
                 searchActive = true
-        
                 filteredDinners = dinnersArray.filter({ title -> Bool in
                     return title.dinnerTitle[0].lowercased().contains(searchText.lowercased())
                 })
