@@ -7,4 +7,4 @@ The App contains multi viewcontrollers which are connected with segues for the r
 
 The recipe app will update for shopping. Users can chose they will cook meal (recipes) and the app can show the needed materials on the shopping list screen.
 
-![alt-text](https://github.com/ozanbarisgunaydin/MarifetliMutfak/blob/main/MM_v1.5.gif)
+![alt-text](https://github.com/ozanbarisgunaydin/MarifetliMutfak/blob/main/MM_v1.6.gif)
